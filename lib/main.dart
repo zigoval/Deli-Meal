@@ -1,5 +1,6 @@
 import 'package:deli_meal/screens/categories_screen.dart';
 import 'package:deli_meal/screens/category_meals_screen.dart';
+import 'package:deli_meal/screens/meal_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -34,7 +35,17 @@ class MyApp extends StatelessWidget {
       //initielRoute: '/', // it's default but it could be anypage
       routes: {
         CategoriesScreen.routeName: (ctx) => CategoriesScreen(),
-        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen()
+        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen()
+      },
+      // onGenerateRoute: (settings){
+      //   print(settings.arguments
+      //   );
+      //   return MaterialPageRoute(builder: (ctx)=> CategoriesScreen())
+      // },
+      onUnknownRoute: (settings) {
+        //404
+        return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
       },
     );
   }
