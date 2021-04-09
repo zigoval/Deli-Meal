@@ -1,8 +1,9 @@
-import 'package:deli_meal/models/category_item.dart';
 import 'package:flutter/material.dart';
 import './dummy_data.dart';
+import 'category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
+  static const routeName = '/';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +14,7 @@ class CategoriesScreen extends StatelessWidget {
         padding: const EdgeInsets.all(25),
         children: DUMMY_CATEGORIES
             .map(
-              (e) => CategoryItem(e.title, e.color),
+              (e) => CategoryItem(e.id, e.title, e.color),
             )
             .toList(),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
