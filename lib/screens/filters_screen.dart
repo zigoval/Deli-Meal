@@ -20,26 +20,6 @@ class _FiltersScreenState extends State<FiltersScreen> {
   bool _lactoseFree = false;
 
   @override
-  initState() {
-    _glutenFree = widget.currentFilters['gluten'];
-    _vegetarian = widget.currentFilters['vegetarian'];
-    _vegan = widget.currentFilters['vegan'];
-    _lactoseFree = widget.currentFilters['lactose'];
-
-    super.initState();
-  }
-
-  Widget _buildSwitchTile(String title, String description, bool currentValue,
-      Function updateValue) {
-    return SwitchListTile(
-      value: currentValue,
-      onChanged: updateValue,
-      title: Text(title),
-      subtitle: Text(description),
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -107,6 +87,26 @@ class _FiltersScreenState extends State<FiltersScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  @override
+  initState() {
+    _glutenFree = widget.currentFilters['gluten'];
+    _vegetarian = widget.currentFilters['vegetarian'];
+    _vegan = widget.currentFilters['vegan'];
+    _lactoseFree = widget.currentFilters['lactose'];
+
+    super.initState();
+  }
+
+  Widget _buildSwitchTile(String title, String description, bool currentValue,
+      Function updateValue) {
+    return SwitchListTile(
+      value: currentValue,
+      onChanged: updateValue,
+      title: Text(title),
+      subtitle: Text(description),
     );
   }
 }

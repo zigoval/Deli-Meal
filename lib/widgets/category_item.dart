@@ -9,13 +9,6 @@ class CategoryItem extends StatelessWidget {
 
   CategoryItem(this.id, this.title, this.color);
 
-  void selectCategory(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(
-      CategoryMealsScreen.routeName,
-      arguments: {'id': id, 'title': title},
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -43,6 +36,13 @@ class CategoryItem extends StatelessWidget {
           style: Theme.of(context).textTheme.headline6,
         ),
       ),
+    );
+  }
+
+  void selectCategory(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
+      CategoryMealsScreen.routeName,
+      arguments: {'id': id, 'title': title},
     );
   }
 }

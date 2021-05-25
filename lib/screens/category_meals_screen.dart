@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import '../models/meal.dart';
 import '../widgets/meal_item.dart';
-import 'package:flutter/material.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
   static const routeName = '/category-meals';
@@ -18,8 +19,25 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   bool _loadedInitData = false;
 
   @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(categoryTitle),
+      ),
+      body: ListView.builder(
+        itemBuilder: (ctx, index) {
+          return MealItem(
+            id: displayMeals[index].id,
+            title: displayMeals[index].title,
+            imageUrl: displayMeals[index].imageUrl,
+            duration: displayMeals[index].duration,
+            complexity: displayMeals[index].complexity,
+            affordability: displayMeals[index].affordability,
+          );
+        },
+        itemCount: displayMeals.length,
+      ),
+    );
   }
 
   @override
@@ -37,31 +55,14 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
     super.didChangeDependencies();
   }
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void _removeMeal(String mealId) {
     setState(() {
       displayMeals.removeWhere((element) => element.id == mealId);
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(categoryTitle),
-      ),
-      body: ListView.builder(
-        itemBuilder: (ctx, index) {
-          return MealItem(
-              id: displayMeals[index].id,
-              title: displayMeals[index].title,
-              imageUrl: displayMeals[index].imageUrl,
-              duration: displayMeals[index].duration,
-              complexity: displayMeals[index].complexity,
-              affordability: displayMeals[index].affordability,
-              removeItem: _removeMeal);
-        },
-        itemCount: displayMeals.length,
-      ),
-    );
   }
 }
